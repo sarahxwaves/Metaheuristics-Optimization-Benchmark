@@ -12,14 +12,15 @@ import timeit
 result = []
 
 n_agents = 20
-n_variables = 2
-lower_bound = [-10, -10]
-upper_bound = [10, 10]
+n_variables = 10
+lower_bound = [-10] * n_variables
+upper_bound = [10] * n_variables
+
 
 def ackley(xx):
-    a=20
-    b=0.2
-    c=2*math.pi
+    a = 20
+    b = 0.2
+    c = 2*math.pi
     d = len(xx)
 
     sum1 = np.sum(np.square(xx))
@@ -29,14 +30,18 @@ def ackley(xx):
     term2 = -math.exp(sum2/d)
 
     y = term1 + term2 + a + math.exp(1)
-    return(y)
+    return (y)
+
 
 space = SearchSpace(n_agents, n_variables, lower_bound, upper_bound)
 optimizer = GA()
+optimizer.p_selection = 0.75
+optimizer.p_mutation = 0.05
+optimizer.p_crossover = 0.6
 function = Function(ackley)
 
 opt = Opytimizer(space, optimizer, function)
-opt.start(n_iterations=1000)
+opt.start(n_iterations=500)
 
 best_agent = opt.space.best_agent
 

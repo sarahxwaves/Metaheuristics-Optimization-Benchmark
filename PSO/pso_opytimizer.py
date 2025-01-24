@@ -8,15 +8,16 @@ from opytimizer.optimizers.swarm import PSO
 from opytimizer.spaces import SearchSpace
 
 n_agents = 20
-n_variables = 2
-lower_bound = [-10, -10]
-upper_bound = [10, 10]
+n_variables = 10
+lower_bound = [-10] * n_variables
+upper_bound = [10] * n_variables
 result = []
 
+
 def ackley(xx):
-    a=20
-    b=0.2
-    c=2*math.pi
+    a = 20
+    b = 0.2
+    c = 2*math.pi
     d = len(xx)
 
     sum1 = np.sum(np.square(xx))
@@ -26,11 +27,16 @@ def ackley(xx):
     term2 = -math.exp(sum2/d)
 
     y = term1 + term2 + a + math.exp(1)
-    return(y)
+    return (y)
+
 
 space = SearchSpace(n_agents, n_variables, lower_bound, upper_bound)
 optimizer = PSO()
 function = Function(ackley)
+
+optimizer.w = 0.4
+optimizer.c1 = 5.00
+optimizer.c2 = 1.05
 
 opt = Opytimizer(space, optimizer, function)
 opt.start(n_iterations=1000)
@@ -45,7 +51,7 @@ print(f"Melhor valor da função objetivo: {best_agent.fit}")
 # for x in range(10):
 #     optimizer = PSO()
 #     function = Function(ackley)
-    
+
 #     tempo_cpu_inicio = time.process_time()
 #     tempo_inicio = timeit.default_timer()
 #     inicio = time.time()
@@ -66,7 +72,6 @@ print(f"Melhor valor da função objetivo: {best_agent.fit}")
 #   'tempo de execução(s)': tempo_fim - tempo_inicio,
 #   'tempo de execução - CPU(s)': tempo_cpu_fim - tempo_cpu_inicio,
 #    })
-    
+
 # for x in result:
 #   print(x)
-

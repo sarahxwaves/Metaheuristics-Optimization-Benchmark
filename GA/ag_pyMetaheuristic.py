@@ -7,7 +7,8 @@ import timeit
 
 result = []
 
-def ackley(variables_values = [0.0]):
+
+def ackley(variables_values=[0.0]):
     xx = np.array(variables_values)
     a = 20
     b = 0.2
@@ -21,25 +22,26 @@ def ackley(variables_values = [0.0]):
     term2 = -math.exp(sum2/d)
 
     func_value = term1 + term2 + a + math.exp(1)
-    return(func_value)
+    return (func_value)
+
 
 parameters = {
-    'population_size': 250,
+    'population_size': 1000,
     'min_values': (-5, -5),
     'max_values': (5, 5),
-    'generations': 200,
-    'mutation_rate': 0.1,
-    'elite': 1,
-    'eta': 1,
+    'generations': 2000,
+    'mutation_rate': 0.05,
+    'elite': 0,
+    'eta': 0,
     'mu': 1,
     'verbose': True,
     'start_init': None,
     'target_value': None
 }
 
-ga = genetic_algorithm(target_function = ackley, **parameters)
+ga = genetic_algorithm(target_function=ackley, **parameters)
 
-#GRAFICO PLOTAGEM
+# GRAFICO PLOTAGEM
 # plot_parameters = {
 #     'min_values': (-5, -5),
 #     'max_values': (5, 5),
