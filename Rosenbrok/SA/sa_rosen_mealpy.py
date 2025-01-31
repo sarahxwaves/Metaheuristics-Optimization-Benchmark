@@ -4,29 +4,28 @@ import math
 import time
 import timeit
 
-def ackley(xx):
-    a=20
-    b=0.2
-    c=2*math.pi
+
+def rosen(xx):
     d = len(xx)
+    xi = xx[0:(d-1)]
+    xnext = xx[1:d]
 
-    sum1 = np.sum(np.square(xx))
-    sum2 = np.sum(np.cos(c*xx))
+    sum_val = sum(100*(xnext_i - xi_i**2)**2 + (xi_i - 1)
+                  ** 2 for xi_i, xnext_i in zip(xi, xnext))
 
-    term1 = -a * math.exp(-b*math.sqrt(sum1/d))
-    term2 = -math.exp(sum2/d)
+    y = sum_val
+    return (y)
 
-    y = term1 + term2 + a + math.exp(1)
-    return(y)
 
 problem_dict = {
     "bounds": FloatVar(lb=(-10.,) * 30, ub=(10.,) * 30, name="delta"),
     "minmax": "min",
-    "obj_func": ackley
+    "obj_func": rosen
 }
 
 
-model = SA.GaussianSA(epoch=1000, pop_size=2, temp_init = 100, cooling_rate = 0.99, scale = 0.1)
+model = SA.GaussianSA(epoch=1000, pop_size=2,
+                      temp_init=100, cooling_rate=0.99, scale=0.1)
 g_best = model.solve(problem_dict)
 print(f"Solution: {g_best.solution}, Fitness: {g_best.target.fitness}")
 

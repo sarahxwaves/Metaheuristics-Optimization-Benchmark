@@ -16,13 +16,10 @@ for x in range(10):
 
     def ackley(xx, a=20, b=0.2, c=2*np.pi):
         d = len(xx)
-
         sum1 = np.sum(np.square(xx))
         sum2 = np.sum(np.cos(c*xx))
-
         term1 = -a * np.exp(-b*np.sqrt(sum1/d))
         term2 = -np.exp(sum2/d)
-
         y = term1 + term2 + a + np.exp(1)
         return y
 
@@ -30,21 +27,22 @@ for x in range(10):
         print(f"Iteration: {iteration}, Cost: {cost}, Position: {pos}")
 
     # now run the optimization, pass a=1 and b=100 as a tuple assigned to args
-    cost, pos = optimizer.optimize(ackley, 5000, a=20, b=1/5, c=2 * np.pi, verbose=True)
+    cost, pos = optimizer.optimize(
+        ackley, 5000, a=20, b=1/5, c=2 * np.pi, verbose=True)
  # Imprime a melhor solução encontrada
     fim = time.time()
     tempo_fim = timeit.default_timer()
     tempo_cpu_fim = time.process_time()
     result.append({
-    'Metodo': 'PSO PYSWARM',
-    # 'valor final X': res.X,
-    # 'valor final F': res.F,
-    'Rodada': x+1,
-    # 'success': res.success,
-    'tempo de execução(s)': tempo_fim - tempo_inicio,
-    'tempo de execução - CPU(s)': tempo_cpu_fim - tempo_cpu_inicio,
-})
+        'Metodo': 'PSO PYSWARM',
+        # 'valor final X': res.X,
+        # 'valor final F': res.F,
+        'Rodada': x+1,
+        # 'success': res.success,
+        'tempo de execução(s)': tempo_fim - tempo_inicio,
+        'tempo de execução - CPU(s)': tempo_cpu_fim - tempo_cpu_inicio,
+    })
 
 
 for x in result:
-  print(x)
+    print(x)

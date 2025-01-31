@@ -7,25 +7,15 @@ import timeit
 result = []
 
 
-def ackley(xx):
-    a = 20
-    b = 0.2
-    c = 2*math.pi
-    d = len(xx)
-
-    sum1 = np.sum(np.square(xx))
-    sum2 = np.sum(np.cos(c*xx))
-
-    term1 = -a * math.exp(-b*math.sqrt(sum1/d))
-    term2 = -math.exp(sum2/d)
-
-    y = term1 + term2 + a + math.exp(1)
+def sphere(xx):
+    sum_val = sum(x**2 for x in xx)
+    y = sum_val
     return (y)
 
 
 problem_dict = {
     "bounds": FloatVar(lb=(-10.,) * 10, ub=(10.,) * 10, name="delta"),
-    "obj_func": ackley,
+    "obj_func": sphere,
     "minmax": "min",
 }
 
