@@ -7,10 +7,10 @@ problem = get_problem("ackley", n_var=10, a=20, b=1/5, c=2 * np.pi)
 algorithm = GA(pop_size=200, eliminate_duplicates=True)
 
 res = minimize(problem,
-    algorithm,
-    ('n_gen', 500),
-    seed=1,
-    verbose=True)
+               algorithm,
+               ('n_gen', 500),
+               seed=1,
+               verbose=True)
 
 print("Best solution found: \nX = %s\nF = %s" % (res.X, res.F))
 
@@ -36,7 +36,7 @@ result = []
 #   n_evals = np.array([e.evaluator.n_eval for e in res.history])
 
 #   opt = np.array([e.opt[0].F for e in res.history])
-  
+
 #   result.append({
 #     # 'evals': opt,
 #     'Metodo': 'GA PYMOO',
@@ -44,6 +44,6 @@ result = []
 #     'valor final F': res.F,
 #     'Rodada': x+1,
 #     'success': res.success,
-#     'tempo de execução(s)': tempo_fim - tempo_inicio,
-#     'tempo de execução - CPU(s)': tempo_cpu_fim - tempo_cpu_inicio
+#     'Tempo execução': tempo_fim - tempo_inicio,
+#     'Tempo execução - CPU': tempo_cpu_fim - tempo_cpu_inicio
 #   })

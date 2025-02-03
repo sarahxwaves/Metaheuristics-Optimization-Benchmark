@@ -24,7 +24,7 @@ parameters = {
     'swarm_size': 250,
     'min_values': (-5, -5),
     'max_values': (5, 5),
-    'iterations': 1000,
+    'iterations': 500,
     'decay': 0,
     'w': 0.9,
     'c1': 2,
@@ -44,27 +44,27 @@ parameters = {
 # }
 # graphs.plot_single_function(target_function = ackley, **plot_parameters)
 
-pso = particle_swarm_optimization(target_function=rosen, **parameters)
+# pso = particle_swarm_optimization(target_function=rosen, **parameters)
 
-print('Melhor solução: ', pso[-1])
+# print('Melhor solução: ', pso[-1])
 
-# for x in range(10):
-#     tempo_cpu_inicio = time.process_time()
-#     tempo_inicio = timeit.default_timer()
-#     inicio = time.time()
-#     pso = particle_swarm_optimization(target_function = ackley, **parameters)
-#     fim = time.time()
-#     tempo_fim = timeit.default_timer()
-#     tempo_cpu_fim = time.process_time()
+for x in range(10):
+    tempo_cpu_inicio = time.process_time()
+    tempo_inicio = timeit.default_timer()
+    inicio = time.time()
+    pso = particle_swarm_optimization(target_function=rosen, **parameters)
+    fim = time.time()
+    tempo_fim = timeit.default_timer()
+    tempo_cpu_fim = time.process_time()
 
-#     result.append({
-#     'Metodo': 'PSO PYMETAHEURISTIC',
-#     'valor final X': pso[ -1],
-#     'valor final F': pso[:-1],
-#     'Rodada': x+1,
-#     'tempo de execução(s)': tempo_fim - tempo_inicio,
-#     'tempo de execução - CPU(s)': tempo_cpu_fim - tempo_cpu_inicio,
-#     })
+    result.append({
+        'Metodo': 'PSO PYMETAHEURISTIC',
+        'valor final X': pso[-1],
+        'valor final F': pso[:-1],
+        'Rodada': x+1,
+        'Tempo execução': tempo_fim - tempo_inicio,
+        'Tempo execução - CPU': tempo_cpu_fim - tempo_cpu_inicio,
+    })
 
-# for x in result:
-#   print(x)
+for x in result:
+    print(x)

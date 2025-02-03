@@ -17,7 +17,8 @@ for x in range(10):
         def move(self):
             """This function defines how the state should be altered."""
             # Vary each parameter by up to +/- 10% of its current value.
-            self.state = [x + (np.random.rand() - 0.5) * 0.2 * x for x in self.state]
+            self.state = [x + (np.random.rand() - 0.5) *
+                          0.2 * x for x in self.state]
 
         def energy(self):
             """This function calculates the energy of the current state."""
@@ -34,7 +35,7 @@ for x in range(10):
             term2 = -math.exp(sum2/d)
 
             func_value = term1 + term2 + a + math.exp(1)
-            return(func_value)
+            return (func_value)
 
     # Initial guess
     init_state = [5, 5]
@@ -43,7 +44,7 @@ for x in range(10):
     ackley_problem = AckleyOptimization(init_state)
 
     ackley_problem.steps = 50000
-    ackley_problem.updates = 5000 
+    ackley_problem.updates = 5000
     ackley_problem.Tmax = 20.0
     ackley_problem.Tmin = 1.0  # Reduz a temperatura final
 
@@ -57,8 +58,8 @@ for x in range(10):
 #     result.append({
 #         'Metodo': 'SA SIMANNEAL',
 #         'Rodada': x+1,
-#         'tempo de execução(s)': tempo_fim - tempo_inicio,
-#         'tempo de execução - CPU(s)': tempo_cpu_fim - tempo_cpu_inicio,
+#         'Tempo execução': tempo_fim - tempo_inicio,
+#         'Tempo execução - CPU': tempo_cpu_fim - tempo_cpu_inicio,
 #     })
 
 # for x in result:

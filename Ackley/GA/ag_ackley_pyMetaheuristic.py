@@ -23,20 +23,18 @@ def ackley(variables_values=[0.0]):
 
 
 parameters = {
-    'population_size': 1000,
+    'population_size': 200,
     'min_values': (-5, -5),
     'max_values': (5, 5),
-    'generations': 1000,
-    'mutation_rate': 0.05,
+    'generations': 500,
+    'mutation_rate': 0.005,
     'elite': 0,
-    'eta': 0,
-    'mu': 1,
     'verbose': True,
     'start_init': None,
     'target_value': None
 }
 
-ga = genetic_algorithm(target_function=ackley, **parameters)
+# ga = genetic_algorithm(target_function=ackley, **parameters)
 
 # GRAFICO PLOTAGEM
 # plot_parameters = {
@@ -50,25 +48,25 @@ ga = genetic_algorithm(target_function=ackley, **parameters)
 
 # graphs.plot_single_function(target_function = ackley, **plot_parameters)
 
-# for x in range(10):
-#     tempo_cpu_inicio = time.process_time()
-#     tempo_inicio = timeit.default_timer()
-#     inicio = time.time()
-#     ga = genetic_algorithm(target_function = ackley, **parameters)
-#     fim = time.time()
-#     tempo_fim = timeit.default_timer()
-#     tempo_cpu_fim = time.process_time()
+for x in range(10):
+    tempo_cpu_inicio = time.process_time()
+    tempo_inicio = timeit.default_timer()
+    inicio = time.time()
+    ga = genetic_algorithm(target_function=ackley, **parameters)
+    fim = time.time()
+    tempo_fim = timeit.default_timer()
+    tempo_cpu_fim = time.process_time()
 
-#     print('Melhor solução: ', ga[-1])
+    # print('Melhor solução: ', ga[-1])
 
-#     result.append({
-#     'Metodo': 'GA PYMETAHEURISTIC',
-#     'valor final X': ga[-1],
-#     'valor final F': ga[:-1],
-#     'Rodada': x+1,
-#     'tempo de execução(s)': tempo_fim - tempo_inicio,
-#     'tempo de execução - CPU(s)': tempo_cpu_fim - tempo_cpu_inicio,
-# })
+    result.append({
+        'Metodo': 'GA PYMETAHEURISTIC',
+        'valor final X': ga[-1],
+        'fitness': ga[:-1],
+        'Rodada': x+1,
+        'Tempo execução': tempo_fim - tempo_inicio,
+        'Tempo execução - CPU': tempo_cpu_fim - tempo_cpu_inicio,
+    })
 
-# for x in result:
-#   print(x)
+for x in result:
+    print(x)

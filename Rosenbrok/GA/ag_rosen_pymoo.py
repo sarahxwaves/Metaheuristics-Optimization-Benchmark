@@ -44,6 +44,6 @@ result = []
 #     'valor final F': res.F,
 #     'Rodada': x+1,
 #     'success': res.success,
-#     'tempo de execução(s)': tempo_fim - tempo_inicio,
-#     'tempo de execução - CPU(s)': tempo_cpu_fim - tempo_cpu_inicio
+#     'Tempo execução': tempo_fim - tempo_inicio,
+#     'Tempo execução - CPU': tempo_cpu_fim - tempo_cpu_inicio
 #   })

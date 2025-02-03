@@ -9,15 +9,15 @@ problem = get_problem("ackley", n_var=10, a=20, b=1/5, c=2 * np.pi)
 algorithm = PSO(pop_size=200)
 
 res = minimize(problem,
-    algorithm,
-    ('n_gen', 500),
-    seed=1,
-    verbose=True)
+               algorithm,
+               ('n_gen', 500),
+               seed=1,
+               verbose=True)
 
 print("Best solution found: \nX = %s\nF = %s" % (res.X, res.F))
 
 
-#LOOP 10X E MÉTRICAS TEMPO
+# LOOP 10X E MÉTRICAS TEMPO
 # result = []
 
 # for x in range(10):
@@ -41,6 +41,6 @@ print("Best solution found: \nX = %s\nF = %s" % (res.X, res.F))
 #   'valor final F': res.F,
 #   'Rodada': x+1,
 #   'success': res.success,
-#   'tempo de execução(s)': tempo_fim - tempo_inicio,
-#   'tempo de execução - CPU(s)': tempo_cpu_fim - tempo_cpu_inicio,
+#   'Tempo execução': tempo_fim - tempo_inicio,
+#   'Tempo execução - CPU': tempo_cpu_fim - tempo_cpu_inicio,
 # })

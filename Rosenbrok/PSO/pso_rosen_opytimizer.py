@@ -34,38 +34,36 @@ optimizer.w = 0.4
 optimizer.c1 = 5.00
 optimizer.c2 = 1.05
 
-opt = Opytimizer(space, optimizer, function)
-opt.start(n_iterations=1000)
+# opt = Opytimizer(space, optimizer, function)
+# opt.start(n_iterations=1000)
 
-best_agent = opt.space.best_agent
+# best_agent = opt.space.best_agent
 
-print(f"Melhor posição: {best_agent.position}")
-print(f"Melhor valor da função objetivo: {best_agent.fit}")
+# print(f"Melhor posição: {best_agent.position}")
+# print(f"Melhor valor da função objetivo: {best_agent.fit}")
 
-# for x in range(10):
-#     optimizer = PSO()
-#     function = Function(ackley)
+for x in range(10):
 
-#     tempo_cpu_inicio = time.process_time()
-#     tempo_inicio = timeit.default_timer()
-#     inicio = time.time()
+    tempo_cpu_inicio = time.process_time()
+    tempo_inicio = timeit.default_timer()
+    inicio = time.time()
 
-#     opt = Opytimizer(space, optimizer, function)
-#     space = SearchSpace(n_agents, n_variables, lower_bound, upper_bound)
-#     opt.start(n_iterations=1000)
+    opt = Opytimizer(space, optimizer, function)
+    space = SearchSpace(n_agents, n_variables, lower_bound, upper_bound)
+    opt.start(n_iterations=500)
+    best_agent = opt.space.best_agent
+    fim = time.time()
+    tempo_fim = timeit.default_timer()
+    tempo_cpu_fim = time.process_time()
 
-#     fim = time.time()
-#     tempo_fim = timeit.default_timer()
-#     tempo_cpu_fim = time.process_time()
+    result.append({
+        'Metodo': 'PSO OPYTIMIZER',
+        'valor final X': best_agent.position,
+        'valor final F': best_agent.fit,
+        'Rodada': x+1,
+        'Tempo execução': tempo_fim - tempo_inicio,
+        'Tempo execução - CPU': tempo_cpu_fim - tempo_cpu_inicio,
+    })
 
-#     result.append({
-#   'Metodo': 'PSO OPYTIMIZER',
-#   'valor final X': best_agent.position,
-#   'valor final F': best_agent.fit,
-#   'Rodada': x+1,
-#   'tempo de execução(s)': tempo_fim - tempo_inicio,
-#   'tempo de execução - CPU(s)': tempo_cpu_fim - tempo_cpu_inicio,
-#    })
-
-# for x in result:
-#   print(x)
+for x in result:
+    print(x)
